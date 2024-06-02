@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import Banner from "./components/Banner";
+import MovieDetais from "./components/MovieDetais";
+import Movies from "./components/Movies";
+import Navbar from "./components/Navbar";
+import Watchlist from "./components/Watchlist";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="bg-black m-0 p-0">
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <Banner /> <Movies />
+              </>
+            }
+          ></Route>
+          <Route path="/watchlist" element={<Watchlist />}></Route>
+          <Route path="/movie/:id" element={<MovieDetais />} />      </Routes>
+      </BrowserRouter>
     </div>
   );
 }
