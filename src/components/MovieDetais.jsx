@@ -1,37 +1,40 @@
-import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
-import axios from 'axios'
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
 import MovieCard from './MovieCard';
 
 const apiKey = process.env.REACT_APP_API_KEY;
 const apiUrl = process.env.REACT_APP_API_URL;
 
-function MovieDetais() {
+function MovieDetails() {
   const { id } = useParams();
-  const [movieObj , setMovie] = useState()
+  const [movieObj, setMovie] = useState(null);
 
   useEffect(() => {
-      axios.get(`https://api.themoviedb.org/3/movie/1010581?api_key=909a8f617091d3842877f29b824c4b66`).then(function(res){
-        setMovie(res.data.results)
-      })
-}, [])
+    axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}`).then(function (res) {
+      setMovie(res.data);
+      console.log(res.data);
+    });
+  }, [id, apiKey]);
+
   return (
-    <div className="relative w-full h-[50vh]">
-    <div
-      className="absolute inset-0 bg-cover bg-center filter blur-mg"
-      style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w1000_and_h450_multi_faces/fY3lD0jM5AoHJMunjGWqJ0hRteI.jpg)` }}
-    ></div>
-    <div className="absolute inset-0 flex flex-row justify-center items-center text-white p-4 bg-black bg-opacity-2">
-      <div
-        className="h-[45vh] w-[250px]  bg-cover bg-center rounded-xl"
-        style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w500/w46Vw536HwNnEzOa7J24YH9DPRS.jpg)` }}
-      ></div>
-     <div className='flex flex-col'>
-        <p>{movieObj.name}</p>
-     </div>
+    <div className=''>
+      {movieObj ? (
+         <div className="relative w-full md:h-[70vh] overflow-hidden">
+          <div className="absolute inset-0">
+            <img src='https://i.pinimg.com/originals/8b/0e/c1/8b0ec10270dbda2b15779da9745ea7a3.jpg' alt={`Title banner`} className="w-full h-full object-cover blur-sm" />
+          </div>
+          <div className="relative flex flex-row items-center h-full bg-black bg-opacity-50 p-4 rounded-lg">
+            <img src='https://images-cdn.ubuy.co.in/634d0a48023cd2292277f3df-avengers-endgame-marvel-studios-framed.jpg' alt={`Movie poster`} className="mt-4 w-48 h-auto rounded-lg shadow-lg" />
+            <h1 className="text-4xl font-bold">Title</h1>
+            <p className="mt-2 text-lg">Release Date</p>
+          </div>
+        </div>
+      ) : (
+        <p>Loading...</p>
+      )}
     </div>
-  </div>
-  )
+  );
 }
 
-export default MovieDetais
+export default MovieDetails;
