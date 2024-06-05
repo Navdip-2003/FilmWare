@@ -3,7 +3,7 @@ import MovieCard from './MovieCard'
 import axios from 'axios'
 import Pagination from './Pagination'
 
-function Movies() {
+function Movies({notify}) {
 
     const [movies, setmovies] = useState([])
     const [pageno, setpageno] = useState(1)
@@ -34,11 +34,8 @@ function Movies() {
             <div className='flex flex-wrap justify-around'>
                 {movies.map((movieObj , index) => {
                     return <MovieCard
-                                image={movieObj.poster_path}
-                                title={movieObj.title}
-                                id = {movieObj.id}
-                                release_date = {movieObj.release_date}
-                                rating = {movieObj.vote_average}
+                                movieObj = {movieObj}
+                                index = {index}
                                 key={index}
                             />
                 })}

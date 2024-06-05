@@ -4,6 +4,8 @@ import Movies from "./components/Movies";
 import Navbar from "./components/Navbar";
 import Watchlist from "./components/Watchlist";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "react-toastify/dist/ReactToastify.css";
+import ToastContainerComponent from "./components/ToastContainerComponent";
 
 function App() {
   return (
@@ -22,7 +24,9 @@ function App() {
           <Route path="/watchlist" element={<Watchlist />}></Route>
           <Route path="/movie/:id" element={<MovieDetais />} />      </Routes>
       </BrowserRouter>
+      <ToastContainerComponent />
     </div>
+    
   );
 }
 
