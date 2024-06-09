@@ -29,7 +29,7 @@ const MovieCard = ({ movieObj ,  index }) => {
   
 
   return (
-    <div className="flex-col h-[50vh] m-2 my-4 w-[200px] hover:scale-105 duration-300 ">
+    <div className="flex-col h-[50vh] m-4 my-4 w-[200px] hover:scale-105 duration-300 ">
       <div
         onClick={() => goToMovieDetails(id)}
         className=" relative  h-[40vh]  bg-cover bg-center rounded-xl "
