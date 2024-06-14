@@ -5,6 +5,8 @@ import MovieCard from './MovieCard';
 import Percentage from './Percentage';
 import like from '../asset/like.png'
 import Credits from './Credits';
+import FieldSeparator from '../compo/FieldSeparator';
+import BelongCollection from '../compo/BelongCollection';
 
 
 
@@ -96,7 +98,7 @@ function MovieDetails() {
                   movieObj.overview ? (
                     <div>
                       <p className="mt-2 text-xl leading-3 mt-5	 font-semibold	">Overview</p>
-                    <p className="mt-2 text-lg font-sans font-normal			">{movieObj.overview}</p>
+                    <p className="mt-2 text-lg font-sans font-normal">{movieObj.overview}</p>
                     </div>
                   ) : <div></div>
                 }
@@ -110,7 +112,18 @@ function MovieDetails() {
       )};
     </div>
       <Credits id = {id}/>
+      <FieldSeparator />
+      
+      {
+        movieObj && movieObj.belongs_to_collection !== null ? (
+          <BelongCollection  becoId={movieObj.belongs_to_collection.id}/>
+        ) : (
+          <div></div>
+        )
+      }
+      
     </div>
+
   );
 }
 
