@@ -21,12 +21,12 @@ function Credit_Movie({creditid}) {
       {
         creditMovies ? (
           <div>
-          <div className='text-2xl my-5'>Credit Movie</div>
+          <div className='text-2xl mt-10'>Credit Movie</div>
           <div className='flex flex-row overflow-x-scroll gap-3 mb-10' style={{ paddingRight: '16px', overflowY: 'hidden', scrollbarWidth: 'thin', scrollbarColor: '#555 #333' }}>
               {creditMovies.slice(0 , 8).map((Movie, index) => (
                 index !== 7 ?
                 <RecoMovieCard Movie={Movie}/> : 
-                <div key={index} className='flex flex-row gap-2 m-3 w-full items-center justify-center'>
+                <div key={index} className='flex flex-row gap-2  w-full items-center justify-center'>
                     <p className='text-sm	leading-4	' style={{userSelect: "none" }}>View More</p>
                     <i className="fa-solid fa-right-to-bracket" style={{color : "#ffffff"}}></i>
                 </div>

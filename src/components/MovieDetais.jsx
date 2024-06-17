@@ -55,9 +55,9 @@ function MovieDetails() {
             }
           </div>
           <div className="relative flex w-full h-full bg-black bg-opacity-70 flex justify-center items-center ">
-            <div className='flex-row max-w-screen-xl	 flex w-100px bg-white-900  justify-center items-center'>
+            <div className='flex-row max-w-screen-xl flex w-100px bg-white-900  justify-center items-center'>
               {movieObj.poster_path ? (
-                <img src={`${photoUrl}${movieObj.poster_path}`} alt={`${movieObj.title} poster`} className="mt-4 min-w-80 w-200px md:h-[50vh] rounded-lg shadow-lg" />
+                <img src={`${photoUrl}${movieObj.poster_path}`} alt={`${movieObj.title} poster`} className="mt-4 min-w-70 md:w-[18vw] md:h-[50vh] rounded-lg shadow-lg" />
               ) : (
                 <p>No poster available</p>
               )}
@@ -109,7 +109,7 @@ function MovieDetails() {
         </div>
       ) : (
         <p>Loading...</p>
-      )};
+      )}
     </div>
       <Credits id = {id}/>
       <FieldSeparator />

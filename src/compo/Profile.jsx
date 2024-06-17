@@ -28,17 +28,17 @@ function Profile() {
     };
 
     return (
-        <div className='h-full mx-4 w-full bg-black text-white'>
+        <div className='h-full p-5 w-full bg-black text-white'>
             {
                 profileData ? (
-                    <div className='flex flex-col'>
+                    <div className='flex flex-col mt-3 '>
                         <div className='flex justify-center '>
-                            <div className='max-w-screen-2xl'>
+                            <div className='max-w-screen-xl'>
                                 <div className='flex justify-center'>
-                                    <div className='md:h-[35vh] m-2 min-w-64 bg-cover bg-center'>
+                                    <div className='md:h-[40vh] md:w-[15vw]  min-w-48 bg-cover bg-center'>
                                         <img className='rounded-xl h-full w-full object-cover' src={`https://image.tmdb.org/t/p/original${profileData.profile_path}`} alt={profileData.name} />
                                     </div>
-                                    <div className='ml-10 flex flex-col m-2'>
+                                    <div className='ml-10 flex flex-col'>
                                         <span className='text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light'>{profileData.name}</span>
                                         <span className='text-2xl sm:text-base lg:text-xl mt-6 mb-3'>Biography</span>
                                         <div className={`text-xs sm:text-sm md:text-base ${isExpanded ? 'max-h-none' : 'max-h-[25vh] overflow-hidden text-ellipsis'}`}>
@@ -57,7 +57,7 @@ function Profile() {
                             </div>
                         </div>
                         <div className='flex justify-center w-full '>
-                            <div className='max-w-screen-2xl w-full'>
+                            <div className='max-w-screen-xl w-full'>
                                 <div className='text-left'>
                                         <Credit_Movie creditid = {id}/>
                                 </div>

@@ -22,10 +22,10 @@ function Credits({ id }) {
       <div onClick={()=>{goToProfile(data.id)}} className='flex-none m-4 md:h-max  w-[150px] bg-neutral-900 rounded-xl p-2 hover:scale-105 duration-300'>
         {
           data.profile_path ? ( 
-            <div className='md:h-[16vh] flex bg-cover bg-center rounded-xl' style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original/${data.profile_path})` }}>
+            <div className='min-h-[150px] md:h-[16vh]  flex bg-cover bg-center rounded-xl' style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original/${data.profile_path})` }}>
            </div>
           ) : (
-            <div className='md:h-[16vh] flex items-center justify-center'>
+            <div className='min-h-100px md:h-[16vh] flex items-center justify-center'>
               <i className="fa-solid fa-user text-4xl	" style={{color : '#ffffff'}}></i>
             </div>
           )
