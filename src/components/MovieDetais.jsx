@@ -7,6 +7,7 @@ import like from '../asset/like.png'
 import Credits from './Credits';
 import FieldSeparator from '../compo/FieldSeparator';
 import BelongCollection from '../compo/BelongCollection';
+import Recommendations from '../compo/Recommendations';
 
 
 
@@ -31,7 +32,7 @@ function MovieDetails() {
     }).catch(error => {
       console.error("Error fetching Images data: ", error);
     });
-  }, []);
+  }, [id]);
 
   function formatDate(inputDate) {
     const date = new Date(inputDate);
@@ -55,13 +56,17 @@ function MovieDetails() {
             }
           </div>
           <div className="relative flex w-full h-full bg-black bg-opacity-70 flex justify-center items-center ">
-            <div className='flex-row max-w-screen-xl flex w-100px bg-white-900  justify-center items-center'>
+            <div className='flex flex-row m-4 max-w-screen-xl w-full h-full   bg-white-900  justify-center items-center'>
               {movieObj.poster_path ? (
-                <img src={`${photoUrl}${movieObj.poster_path}`} alt={`${movieObj.title} poster`} className="mt-4 min-w-70 md:w-[18vw] md:h-[50vh] rounded-lg shadow-lg" />
+                <div className=' md:w-[15vw] md:h-[35vh] bg-cover	 '>
+                  <img src={`${photoUrl}${movieObj.poster_path}`} alt={`${movieObj.title} poster`} className=" rounded-lg shadow-lg" />
+
+                </div>
               ) : (
                 <p>No poster available</p>
               )}
-              <div className="ml-8">
+              
+              <div className="flex flex-col md:w-[80vw] ml-8">
                 <h1 className="text-4xl font-medium text-2xl">{`${movieObj.title} (${movieObj.release_date.split('-')[0]})`}</h1>
 
                 <div className='flex items-center bg-white-900/60 gap-6 h-[60px]'>
@@ -111,16 +116,24 @@ function MovieDetails() {
         <p>Loading...</p>
       )}
     </div>
-      <Credits id = {id}/>
-      <FieldSeparator />
-      
+      <Credits id = {id}/>      
       {
         movieObj && movieObj.belongs_to_collection !== null ? (
-          <BelongCollection  becoId={movieObj.belongs_to_collection.id}/>
+          <div>
+            <FieldSeparator />
+            <BelongCollection  becoId={movieObj.belongs_to_collection.id}/>
+          </div>
+          
         ) : (
           <div></div>
         )
       }
+      <>
+        <FieldSeparator />
+        <Recommendations id={id} />
+      </>
+
+      
       
     </div>
 

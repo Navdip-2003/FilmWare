@@ -14,7 +14,7 @@ function Credit_Movie({creditid}) {
         }).catch(error => {
           console.error("Error fetching Images data: ", error);
         });
-      }, []);
+      }, [creditid]);
       
   return (
     <div>
@@ -25,7 +25,7 @@ function Credit_Movie({creditid}) {
           <div className='flex flex-row overflow-x-scroll gap-3 mb-10' style={{ paddingRight: '16px', overflowY: 'hidden', scrollbarWidth: 'thin', scrollbarColor: '#555 #333' }}>
               {creditMovies.slice(0 , 8).map((Movie, index) => (
                 index !== 7 ?
-                <RecoMovieCard Movie={Movie}/> : 
+                <RecoMovieCard Movie={Movie} key={index}/> : 
                 <div key={index} className='flex flex-row gap-2  w-full items-center justify-center'>
                     <p className='text-sm	leading-4	' style={{userSelect: "none" }}>View More</p>
                     <i className="fa-solid fa-right-to-bracket" style={{color : "#ffffff"}}></i>

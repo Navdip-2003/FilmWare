@@ -5,7 +5,7 @@ import useNavigation from '../hooks/useNavigation';
 const apiKey = process.env.REACT_APP_API_KEY;
 
 function Credits({ id }) {
-  const {goToProfile} = useNavigation();
+  const {goToProfile , goToCreditAll } = useNavigation();
   const [credit, setCredit] = useState([]);
   
 
@@ -15,7 +15,7 @@ function Credits({ id }) {
     }).catch(error => {
       console.error("Error fetching Images data: ", error);
     });
-  }, []);
+  }, [id]);
 
   const CardUI = ({ data }) => {
     return (
@@ -41,14 +41,14 @@ function Credits({ id }) {
 
 
   return (
-    <div className='w-full flex  justify-center'>
+    <div className='w-full flex mt-8  justify-center'>
       <div className='max-w-screen-xl w-full  flex flex-col text-xl font-medium'>
         <span>Top Billed Cast</span>
         <div className='flex flex-row overflow-x-scroll gap-3 ' style={{ paddingRight: '16px', overflowY: 'hidden', scrollbarWidth: 'thin', scrollbarColor: '#555 #333' }}>
           {credit.slice(0 , 8).map((character, index) => (
             index !== 7 ?
             <CardUI data={character} key={index} /> : 
-            <div key={index} className='flex flex-row gap-2 m-3 w-full items-center justify-center'>
+            <div onClick={()=> { goToCreditAll(id , credit)}} key={index} className='flex flex-row gap-2 m-3 w-full items-center justify-center'>
                 <p className='text-sm	leading-4	' style={{userSelect: "none" }}>View More</p>
                 <i className="fa-solid fa-right-to-bracket" style={{color : "#ffffff"}}></i>
             </div>

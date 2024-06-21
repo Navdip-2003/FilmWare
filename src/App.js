@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import ToastContainerComponent from "./components/ToastContainerComponent";
 import Profile from "./compo/Profile";
+import CreditAll from "./compo/CreditAll";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/watchlist" element={<Watchlist />}></Route>
           <Route path="/movie/:id" element={<MovieDetais />} />
           <Route path="/profile/:id" element={<Profile />} />
+          <Route path="/movie/:id/creditall" element={<CreditAll />} />
         </Routes>
       </BrowserRouter>
       <ToastContainerComponent />
