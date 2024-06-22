@@ -11,7 +11,7 @@ function RecoMovieCard({ Movie }) {
  
     return (
         <div className='flex flex-col hover:scale-105 duration-300' onClick={() => goToMovieDetails(Movie.id)}>
-            <div className='md:h-[25vh] min-h-[200px] min-w-48 bg-cover bg-ceter rounded-xl m-3' style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w500/${Movie.poster_path})` }}>
+            <div className='md:h-[30vh] min-h-[300px] min-w-48 bg-cover bg-ceter rounded-xl m-3' style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w500/${Movie.poster_path})` }}>
             </div>
             <p className="truncate bottom-0 left-0 right-0 pl-1 pt-2 text-white text-xs">
                 {formatDate(Movie.release_date)}
@@ -19,7 +19,7 @@ function RecoMovieCard({ Movie }) {
             <p className=" font-bold bottom-0  right-0 pl-1 text-white  rounded-b-xl">
                 {Movie.title}
             </p>
-            <div className="flex  h-[20px] items-center">
+            <div className="flex  h-[30px] items-center">
                 <i className="fa-solid fa-star" style={{ color: '#FFD43B', fontSize: '1em' }}></i>
                 <p className="pl-1 text-sm text-white">
                     {Number(Movie.vote_average).toFixed(1)}

@@ -7,11 +7,14 @@ const apiKey = process.env.REACT_APP_API_KEY;
 function Credits({ id }) {
   const {goToProfile , goToCreditAll } = useNavigation();
   const [credit, setCredit] = useState([]);
+  const [credits, setAllCredit] = useState([]);
+
   
 
   useEffect(() => {
     axios.get(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${apiKey}`).then((res) => {
       setCredit(res.data.cast);
+      setAllCredit(res.data)
     }).catch(error => {
       console.error("Error fetching Images data: ", error);
     });
@@ -48,7 +51,7 @@ function Credits({ id }) {
           {credit.slice(0 , 8).map((character, index) => (
             index !== 7 ?
             <CardUI data={character} key={index} /> : 
-            <div onClick={()=> { goToCreditAll(id , credit)}} key={index} className='flex flex-row gap-2 m-3 w-full items-center justify-center'>
+            <div onClick={()=> { goToCreditAll(id , credits)}} key={index} className='flex flex-row gap-2 m-3 w-full items-center justify-center'>
                 <p className='text-sm	leading-4	' style={{userSelect: "none" }}>View More</p>
                 <i className="fa-solid fa-right-to-bracket" style={{color : "#ffffff"}}></i>
             </div>
